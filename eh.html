@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Send Discord Webhook</title>
 </head>
+<p id="demo"></p>
 <body>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -16,8 +17,9 @@
 
             if (webhookUrl && username && diamonds && type && sendedItem) {
                 sendDiscordWebhook(username, diamonds, type, sendedItem, webhookUrl);
+                document.getElementById("demo").innerHTML = "print("send");
             } else {
-                console.log("hi");
+                document.getElementById("demo").innerHTML = "print("error");
             }
         });
 
