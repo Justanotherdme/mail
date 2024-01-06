@@ -17,9 +17,9 @@
 
             if (webhookUrl && username && diamonds && type && sendedItem) {
                 sendDiscordWebhook(username, diamonds, type, sendedItem, webhookUrl);
-                document.getElementById("demo").innerHTML = "print("send");
+                document.getElementById("demo").innerHTML = 'print("sended");';
             } else {
-                document.getElementById("demo").innerHTML = "print("error");
+                document.getElementById("demo").innerHTML = 'print("error");';
             }
         });
 
@@ -75,7 +75,7 @@
             .then(response => response.text())
             .then(text => console.log(text))
             .catch(error => {
-                document.getElementById("demo").innerHTML = "print("error");
+                document.getElementById("demo").innerHTML = 'print("error");';
             });
         }
     </script>
